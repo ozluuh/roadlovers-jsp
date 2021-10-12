@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+    tools {
+        maven 'apache-maven'
+    }
+    stages {
+        stage('Get Code') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ozluuh/roadlovers-jsp.git']]])
+            }
+        }
+        stage('Clean Target') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
+        stage('Build from Source') {
+            steps {
+                sh 'mvn install'
+            }
+        }
+        stage('Request for approval and Deploy App') {
+            input {
+                message 'Do you approve the deployment?'
+            }
+            steps {
+                deploy adapters: [tomcat9(credentialsId: '103035cd-091d-4052-a4b8-1fcd2cf40175', path: '', url: 'http://localhost:8080')], contextPath: 'roadlovers', war: 'target/**/*.war'
+            }
+        }
+    }
+    post {
+        aborted {
+            echo 'Deployment not approved, pipeline aborted'
+        }
+        failure {
+            echo 'The Pipeline failed :('
+        }
+        success {
+            echo 'The Pipeline succeeded :)'
+        }
+    }
+}
