@@ -1,0 +1,24 @@
+<taglib
+	xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+    version="2.1"
+>
+	<description>Custom functions</description>
+	<tlib-version>1.0</tlib-version>
+	<short-name>cf</short-name>
+	
+	<function>
+		<description>Format LocalDateTime using pattern</description>
+		<name>formatLocalDateTime</name>
+		<function-class>com.roadlovers.util.FormatterUtil</function-class>
+		<function-signature>java.lang.String formatLocalDateTime( java.time.LocalDateTime, java.lang.String )</function-signature>
+	</function>
+	
+	<function>
+		<description>Format value using pattern</description>
+		<name>formatCurrency</name>
+		<function-class>com.roadlovers.util.FormatterUtil</function-class>
+		<function-signature>java.lang.String formatCurrency( java.lang.Object, java.lang.String )</function-signature>
+	</function>
+</taglib>

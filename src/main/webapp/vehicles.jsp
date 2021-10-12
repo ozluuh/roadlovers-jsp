@@ -2,6 +2,8 @@
 <%@ taglib prefix="layout" tagdir="/WEB-INF/tags/template" %>
 <%@ taglib prefix="component" tagdir="/WEB-INF/tags/components" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="cf" uri="/WEB-INF/functions.tld" %>
 
 <layout:_Layout title="Vehicles">
 
@@ -60,7 +62,15 @@
 
 		<div class="table-responsive-md">
 			<table class="table table-striped table-hover table-sm table-bordered table-primary">
-				<caption>Total de veículos cadastrados em nossa base: <c:out value="${vehicles.size()}"></c:out> </caption>
+				<caption>
+					Total de veículos&nbsp;
+					<c:choose>
+						<c:when test="${filter}">encontrados</c:when>
+						<c:otherwise>cadastrados</c:otherwise>
+					</c:choose> 
+					&nbsp;em nossa base:&nbsp;
+					<c:out value="${vehicles.size()}" /> 
+				</caption>
 				<thead class="thead-dark">
 					<tr class="text-center">
 						<th scope="col">#</th>
@@ -88,11 +98,13 @@
 							<td>
 								<div class="d-flex justify-content-between">
 									<span>R$</span>
-									<span>${vehicle.value}</span>
+									<span>${cf:formatCurrency(vehicle.value, "#,##0.00")}</span>
 								</div>
 							</td>
 							<td>
-								<div>${vehicle.createdAt}</div>
+								<div>
+									${cf:formatLocalDateTime(vehicle.createdAt, "dd/MM/yyyy HH:mm")}
+								</div>
 							</td>
 							<td>
 								<div class="d-flex justify-content-center">

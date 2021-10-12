@@ -1,8 +1,10 @@
 package com.roadlovers.controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,6 +50,7 @@ public class RoutesController extends HttpServlet {
             vehicle.setVehicleType(classes.get(i));
             vehicle.setManufacturer(manufacturers.get(i));
             vehicle.setValue(values.get(i));
+            vehicle.setCreatedAt(LocalDateTime.now());
             
             vehicles.add(vehicle);
         }
@@ -84,7 +87,21 @@ public class RoutesController extends HttpServlet {
 	}
 
 	private void index(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("vehicles", vehicles);
+		String year = req.getParameter("nbrYear");
+		
+		if(year == null || year.isEmpty()) {
+			req.setAttribute("vehicles", vehicles);		
+			req.setAttribute("filter", false);
+		} else {
+			List<Vehicle> filteredVehicles = vehicles
+					.stream()
+					.filter(vehicle -> vehicle.getYear() == Integer.valueOf(year))
+					.collect(Collectors.toList());
+			
+			
+			req.setAttribute("vehicles", filteredVehicles);
+			req.setAttribute("filter", true);
+		}
 		req.getRequestDispatcher("vehicles.jsp").forward(req, resp);
 	}
 }
