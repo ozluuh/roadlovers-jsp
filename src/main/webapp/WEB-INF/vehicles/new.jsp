@@ -4,10 +4,14 @@
 
 <layout:_Layout title="Cadastro">
 
+	<jsp:attribute name="scripts">
+		<script src='<c:url value="/js/site.js" />'></script>
+	</jsp:attribute>
+
 	<jsp:body>
 		<c:url var="form" value="/vehicles" />
 		<h1>Cadastro de Veículos</h1>
-		<form action='${form}' method="POST" autocomplete="off">
+		<form action='${form}/store' method="POST" autocomplete="off">
 		
 		    <!-- FORM -->
 		    <jsp:include page="_Form.jsp" />

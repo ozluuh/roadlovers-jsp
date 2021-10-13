@@ -7,7 +7,7 @@
 	<jsp:body>
 		<c:url var="form" value="/vehicles" />
 		<h1>Atualizar Veículo</h1>
-		<form action="${form}" method="POST" autocomplete="off">
+		<form action="${form}/update" method="POST" autocomplete="off">
 		
 		    <!-- FORM -->
 		    <jsp:include page="_Form.jsp" />

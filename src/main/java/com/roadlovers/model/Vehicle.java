@@ -17,7 +17,7 @@ public class Vehicle {
 	
 	private LocalDateTime createdAt;
 
-	private VehicleType vehicleType;
+	private VehicleType classe;
 
 	private Manufacturer manufacturer;
 }

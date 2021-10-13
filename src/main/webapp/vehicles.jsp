@@ -30,7 +30,8 @@
 		<h1>Veículos Cadastrados</h1>
 		
 		<c:if test="${not empty message}">
-			<component:alert message="${message}" />
+			<component:alert message="${message}" type="${severity}" />
+			<c:remove var="message" scope="session" />
 		</c:if>
 
 		<div class="d-flex justify-content-between align-items-center mb-2">
@@ -69,7 +70,7 @@
 						<c:otherwise>cadastrados</c:otherwise>
 					</c:choose> 
 					&nbsp;em nossa base:&nbsp;
-					<c:out value="${vehicles.size()}" /> 
+					<c:out value="${vehiclesList.size()}" /> 
 				</caption>
 				<thead class="thead-dark">
 					<tr class="text-center">
@@ -84,17 +85,17 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="vehicle" items="${vehicles}">
+					<c:forEach var="vehicle" items="${vehiclesList}" varStatus="current">
 						<tr class="text-center">
 							<th scope="row">
 								<div class="text-end">
-									${vehicle.id}
+									${current.count}
 								</div>
 							</th>
 							<td>${vehicle.year}</td>
-							<td>${vehicle.manufacturer}</td>
+							<td>${vehicle.manufacturer.description}</td>
 							<td>${vehicle.model}</td>
-							<td>${vehicle.vehicleType}</td>
+							<td>${vehicle.classe.description}</td>
 							<td>
 								<div class="d-flex justify-content-between">
 									<span>R$</span>
@@ -109,7 +110,7 @@
 							<td>
 								<div class="d-flex justify-content-center">
 									<div class="btn-group btn-group-sm" role="group" aria-label="Ações">
-										<a href="#" class="btn btn-outline-info" title="Editar">
+										<a href='<c:url value="/vehicles/edit?id=${vehicle.id}" />' class="btn btn-outline-info" title="Editar">
 											<i class="bi bi-pencil"></i>
 											<span class="visually-hidden">Editar registro</span>
 										</a>
@@ -121,7 +122,7 @@
 											data-bs-target="#removeVehicleModal"
 											data-vehicle-id="${vehicle.id}"
 											data-vehicle-model="${vehicle.model}"
-											data-vehicle-manufacturer="${vehicle.manufacturer}"
+											data-vehicle-manufacturer="${vehicle.manufacturer.description}"
 										>
 											<i class="bi bi-trash"></i>
 											<span class="visually-hidden">Remover registro</span>
@@ -162,8 +163,8 @@
 					</div>
 
 					<div class="modal-footer justify-content-center">
-						<form action="#" method="post" class="w-100">
-							<input type="hidden" name="id" id="vehicleId" />
+						<form action='<c:url value="/vehicles/delete" />' method="POST" class="w-100">
+							<input type="hidden" name="vehicleId" id="vehicleId" />
 							<button type="submit" class="btn btn-outline-danger w-100 font-weight-bold">
 								Entendo as consequências, remova o registro do veículo
 							</button>
