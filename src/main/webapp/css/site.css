@@ -81,3 +81,16 @@ body {
     width: 50% !important;
   }
 }
+
+/* Remove arrows from input[type=number] */
+/* Chrome, Safari, Edge, Opera */
+input.collapse-arrow::-webkit-outer-spin-button,
+input.collapse-arrow::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number].collapse-arrow {
+  -moz-appearance: textfield;
+}
