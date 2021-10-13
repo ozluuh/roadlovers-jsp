@@ -24,7 +24,7 @@ pipeline {
                 message 'Do you approve the deployment?'
             }
             steps {
-                deploy adapters: [tomcat9(credentialsId: '103035cd-091d-4052-a4b8-1fcd2cf40175', path: '', url: 'http://localhost:8080')], contextPath: 'roadlovers', war: 'target/**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcat-user-deploy', path: '', url: 'http://localhost:8080')], contextPath: 'roadlovers', war: 'target/**/*.war'
             }
         }
     }
