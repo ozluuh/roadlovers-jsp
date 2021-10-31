@@ -15,7 +15,8 @@ a {
   border-color: #1861ac;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
@@ -40,7 +41,7 @@ html {
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
 }
 
 button.accept-policy {
@@ -69,7 +70,7 @@ body {
 
 /* User */
 .form-select {
-	background-image: url(../img/arrow-down.svg) !important;
+  background-image: url(../img/arrow-down.svg) !important;
 }
 
 .w--75 {
@@ -91,6 +92,6 @@ input.collapse-arrow::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number].collapse-arrow {
+input[type="number"].collapse-arrow {
   -moz-appearance: textfield;
 }

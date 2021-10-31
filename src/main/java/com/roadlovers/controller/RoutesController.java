@@ -26,46 +26,46 @@ import com.roadlovers.util.ServletUtil;
 )
 public class RoutesController extends HttpServlet {
 
-    /**
+	/**
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	private static Long id = 1L;
 
-    private static List<Vehicle> vehicles = getCars();
+	private static List<Vehicle> vehicles = getCars();
 
-    private static final List<Vehicle> getCars() {
-        List<String> models = List.of("Corvette (C2)","Cobalt SS","CLS55 AMG","Diablo");
-        List<Integer> years = List.of(1963, 2006, 2009, 1993);
-        List<Double> values = List.of(55000d,20000d,270000d,138000d);
-        List<VehicleType> classes = List.of(VehicleType.MUSCLE, VehicleType.SPORTS, VehicleType.LUXURY, VehicleType.LUXURY, VehicleType.EXOTIC);
-        List<Manufacturer> manufacturers = List.of(Manufacturer.CHEVROLET, Manufacturer.CHEVROLET, Manufacturer.MERCEDES_BENZ, Manufacturer.LAMBORGHINI);
+	private static final List<Vehicle> getCars() {
+		List<String> models = List.of("Corvette (C2)","Cobalt SS","CLS55 AMG","Diablo");
+		List<Integer> years = List.of(1963, 2006, 2009, 1993);
+		List<Double> values = List.of(55000d,20000d,270000d,138000d);
+		List<VehicleType> classes = List.of(VehicleType.MUSCLE, VehicleType.SPORTS, VehicleType.LUXURY, VehicleType.LUXURY, VehicleType.EXOTIC);
+		List<Manufacturer> manufacturers = List.of(Manufacturer.CHEVROLET, Manufacturer.CHEVROLET, Manufacturer.MERCEDES_BENZ, Manufacturer.LAMBORGHINI);
 
-        List<Vehicle> vehicles = new ArrayList<>();
+		List<Vehicle> vehicles = new ArrayList<>();
 
-        for (int i = 0; i < models.size(); i++) {
-            Vehicle vehicle = new Vehicle();
+		for (int i = 0; i < models.size(); i++) {
+			Vehicle vehicle = new Vehicle();
 
-            vehicle.setId(id++);
-            vehicle.setModel(models.get(i));
-            vehicle.setYear(years.get(i));
-            vehicle.setClasse(classes.get(i));
-            vehicle.setManufacturer(manufacturers.get(i));
-            vehicle.setValue(values.get(i));
-            vehicle.setCreatedAt(LocalDateTime.now());
+			vehicle.setId(id++);
+			vehicle.setModel(models.get(i));
+			vehicle.setYear(years.get(i));
+			vehicle.setClasse(classes.get(i));
+			vehicle.setManufacturer(manufacturers.get(i));
+			vehicle.setValue(values.get(i));
+			vehicle.setCreatedAt(LocalDateTime.now());
 
-            vehicles.add(vehicle);
-        }
+			vehicles.add(vehicle);
+		}
 
-        return vehicles;
-    }
+		return vehicles;
+	}
 
-    @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String uri = ServletUtil.getURI(req);
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String uri = ServletUtil.getURI(req);
 
-        switch (uri) {
+		switch (uri) {
 		case "/vehicles":
 			index(req, resp);
 			break;
@@ -89,7 +89,7 @@ public class RoutesController extends HttpServlet {
 			sendRedirectTo(req, resp, "/index.jsp");
 			break;
 		}
-    }
+	}
 
 	private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String idToSearch = req.getParameter("id");
@@ -118,33 +118,33 @@ public class RoutesController extends HttpServlet {
 		req.setAttribute("manufacturers", Manufacturer.values());
 	}
 
-    private void update(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-    	Vehicle parsedVehicle = parseVehicle(req);
+	private void update(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		Vehicle parsedVehicle = parseVehicle(req);
 
-    	vehicles.removeIf(v -> v.getId() == parsedVehicle.getId());
-    	vehicles.add(parsedVehicle);
-    	vehicles.sort(Comparator.comparing(Vehicle::getId));
+		vehicles.removeIf(v -> v.getId() == parsedVehicle.getId());
+		vehicles.add(parsedVehicle);
+		vehicles.sort(Comparator.comparing(Vehicle::getId));
 
-    	addSessionAttribute(req, "message", "Veículo atualizado com sucesso!");
-    	addSessionAttribute(req, "severity", "success");
+		addSessionAttribute(req, "message", "Veículo atualizado com sucesso!");
+		addSessionAttribute(req, "severity", "success");
 
-    	sendRedirectTo(req, resp, "/vehicles");
+		sendRedirectTo(req, resp, "/vehicles");
 	}
 
 	private void destroy(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-    	Long idToRemove = Long.valueOf(req.getParameter("vehicleId"));
+		Long idToRemove = Long.valueOf(req.getParameter("vehicleId"));
 
-    	vehicles = vehicles.stream().filter(vehicle -> vehicle.getId() != idToRemove).collect(Collectors.toList());
+		vehicles = vehicles.stream().filter(vehicle -> vehicle.getId() != idToRemove).collect(Collectors.toList());
 
-    	addSessionAttribute(req, "message", "Veículo removido com sucesso");
-    	addSessionAttribute(req, "severity", "success");
+		addSessionAttribute(req, "message", "Veículo removido com sucesso");
+		addSessionAttribute(req, "severity", "success");
 
-    	sendRedirectTo(req, resp, "/vehicles");
+		sendRedirectTo(req, resp, "/vehicles");
 	}
 
 	private void addSessionAttribute(HttpServletRequest req, String name, Object value) {
 		HttpSession session = req.getSession(false);
-    	session.setAttribute(name, value);
+		session.setAttribute(name, value);
 	}
 
 	private void sendRedirectTo(HttpServletRequest req, HttpServletResponse resp, String path) throws IOException {
@@ -159,7 +159,7 @@ public class RoutesController extends HttpServlet {
 		addSessionAttribute(req, "message", "Veículo cadastrado com sucesso!");
 		addSessionAttribute(req, "severity", "success");
 
-    	sendRedirectTo(req, resp, "/vehicles");
+		sendRedirectTo(req, resp, "/vehicles");
 	}
 
 	private Vehicle parseVehicle(HttpServletRequest req) {

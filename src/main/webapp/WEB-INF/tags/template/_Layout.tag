@@ -20,15 +20,15 @@
             <div class="container">
                 <a class="navbar-brand" href='<c:url value="/" />'>${SiteName}</a>
                 <button
-                	class="navbar-toggler"
-                	type="button"
-                	data-bs-toggle="collapse"
-                	data-bs-target=".navbar-collapse"
-                	aria-controls="navbarSupportedContent"
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent"
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
-                	<span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
@@ -36,7 +36,7 @@
                             <a class="nav-link" href='<c:url value="/" />'>Principal</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href='<c:url value="/vehicles" />'>Ve�culos</a>
+                            <a class="nav-link" href='<c:url value="/vehicles" />'>Veículos</a>
                         </li>
                     </ul>
                 </div>
@@ -56,7 +56,7 @@
     </footer>
     <script src="${bootstrap}/js/bootstrap.bundle.min.js"></script>
     <c:if test="${not empty scripts}">
-    	<jsp:invoke fragment="scripts" />
+        <jsp:invoke fragment="scripts" />
     </c:if>
 </body>
 </html>
