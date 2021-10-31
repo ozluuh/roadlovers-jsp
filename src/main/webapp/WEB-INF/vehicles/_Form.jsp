@@ -5,17 +5,17 @@
         id="Id"
         value="${vehicle.id}"
         hidden
-    />
+        />
     <div class="form-group">
         <label for="Model">Modelo</label>
         <input
             name="txtVehicleModel"
             id="Model"
             class="form-control"
-            placeholder="Informe o modelo do veículo..."
+            placeholder="Informe o modelo do ve&iacute;culo..."
             value="${vehicle.model}"
             required
-        />
+            />
     </div>
 
     <div class="form-group">
@@ -26,9 +26,9 @@
             class="form-control"
             min="1920"
             max="9999"
-            placeholder="Informe o ano do veículo..."
+            placeholder="Informe o ano do ve&iacute;culo..."
             value="${vehicle.year}"
-        />
+            />
     </div>
 
     <div class="form-group">
@@ -38,11 +38,11 @@
             name="slcVehicleManufacturer"
             id="Manufacturer"
             class="form-control"
-            placeholder="Informe a fabricante do veículo..."
+            placeholder="Informe a fabricante do ve&iacute;culo..."
             list="manufacturers"
             value="${vehicle.manufacturer}"
             required
-        />
+            />
         <datalist id="manufacturers" class="collapse">
             <c:forEach var="manufacturer" items="${manufacturers}">
                 <option value="${manufacturer}" label="${manufacturer.description}" />
@@ -56,11 +56,11 @@
             name="slcVehicleType"
             id="VehicleType"
             class="form-control"
-            placeholder="Informe a classe do veículo..."
+            placeholder="Informe a classe do ve&iacute;culo..."
             value="${vehicle.classe}"
             list="classes"
             required
-        />
+            />
         <datalist id="classes" class="collapse">
             <c:forEach var="classe" items="${classes}">
                 <option value="${classe}" label="${classe.description}" />
@@ -76,10 +76,10 @@
             class="form-control hidden-arrow"
             step="any"
             min="1"
-            placeholder="Informe o valor do veículo..."
+            placeholder="Informe o valor do ve&iacute;culo..."
             pattern="^\d+(\.|,)?\d{2}$"
             value="${vehicle.value}"
             required
-        />
+            />
     </div>
 </div>

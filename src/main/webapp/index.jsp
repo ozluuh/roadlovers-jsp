@@ -6,7 +6,7 @@
     <jsp:body>
         <div class="text-center">
             <h1 class="display-4">Bem-vindo</h1>
-            <p>Você pode começar visitando a seguinte seção: <a href='<c:url value="/vehicles" />'>Veículos</a>.</p>
+            <p>Voc&ecirc; pode come&cc&ccedil;ar visitando a seguinte se&ccedil;&atilde;o: <a href='<c:url value="/vehicles" />'>Ve&iacute;culos</a>.</p>
         </div>
     </jsp:body>
 </layout:_Layout>

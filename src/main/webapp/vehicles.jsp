@@ -9,7 +9,7 @@
 
     <jsp:attribute name="scripts">
         <script>
-            document.addEventListener("DOMContentLoaded", function(event) {
+            document.addEventListener("DOMContentLoaded", function (event) {
                 document.querySelectorAll('.vehicle-remove').forEach(elmnt => {
                     elmnt.addEventListener("click", event => {
                         const button = elmnt;
@@ -27,7 +27,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h1>Veículos Cadastrados</h1>
+        <h1>Ve&iacute;culos Cadastrados</h1>
 
         <c:if test="${not empty message}">
             <component:alert message="${message}" type="${severity}" />
@@ -46,8 +46,8 @@
                             min="1920"
                             max="9999"
                             class="form-control"
-                            placeholder="Ano do veículo"
-                        />
+                            placeholder="Ano do ve&iacute;culo"
+                            />
                         <button class="btn btn-outline-primary" title="Pesquisar" type="submit">
                             <i class="bi bi-search"></i>
                             <span class="ms-2 ml-2 d-none d-md-inline">Buscar</span>
@@ -55,21 +55,16 @@
                     </div>
                 </form>
             </div>
-            <a class="btn btn-outline-secondary" href='<c:url value="/vehicles/new" />' title="Cadastrar novo veículo">
+            <a class="btn btn-outline-secondary" href='<c:url value="/vehicles/new" />' title="Cadastrar novo ve&iacute;culo">
                 <i class="bi bi-plus-lg"></i>
-                <span class="ms-2 text-capitalize"><span class="d-none d-md-inline">Cadastrar</span> veículo</span>
+                <span class="ms-2 text-capitalize"><span class="d-none d-md-inline">Cadastrar</span> ve&iacute;culo</span>
             </a>
         </div>
 
         <div class="table-responsive-md">
             <table class="table table-striped table-hover table-sm table-bordered table-primary">
                 <caption>
-                    Total de veículos&nbsp;
-                    <c:choose>
-                        <c:when test="${filter}">encontrados</c:when>
-                        <c:otherwise>cadastrados</c:otherwise>
-                    </c:choose>
-                    &nbsp;em nossa base:&nbsp;
+                    Total de ve&iacute;culos cadastrados em nossa base:&nbsp;
                     <c:out value="${vehiclesList.size()}" />
                 </caption>
                 <thead class="thead-dark">
@@ -81,7 +76,7 @@
                         <th scope="col">Classe</th>
                         <th scope="col">Valor</th>
                         <th scope="col">Dt. Registro</th>
-                        <th scope="col">Ações</th>
+                        <th scope="col">A&ccedil;&otilde;es</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -109,7 +104,7 @@
                             </td>
                             <td>
                                 <div class="d-flex justify-content-center">
-                                    <div class="btn-group btn-group-sm" role="group" aria-label="Ações">
+                                    <div class="btn-group btn-group-sm" role="group" aria-label="A&ccedil;&otilde;es">
                                         <a href='<c:url value="/vehicles/edit?id=${vehicle.id}" />' class="btn btn-outline-info" title="Editar">
                                             <i class="bi bi-pencil"></i>
                                             <span class="visually-hidden">Editar registro</span>
@@ -123,7 +118,7 @@
                                             data-vehicle-id="${vehicle.id}"
                                             data-vehicle-model="${vehicle.model}"
                                             data-vehicle-manufacturer="${vehicle.manufacturer.description}"
-                                        >
+                                            >
                                             <i class="bi bi-trash"></i>
                                             <span class="visually-hidden">Remover registro</span>
                                         </button>
@@ -144,11 +139,11 @@
             tabindex="-1"
             aria-labelledby="removeVehicleModalLabel"
             aria-hidden="true"
-        >
+            >
             <div class="modal-dialog">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="removeVehicleModalLabel">Você tem total certeza?</h5>
+                        <h5 class="modal-title" id="removeVehicleModalLabel">Voc&ecirc; tem total certeza?</h5>
                         <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true"></span>
                         </button>
@@ -156,7 +151,7 @@
 
                     <div class="modal-body">
                         <p>
-                            Essa ação não poderá ser revertida. Isso fará com que o veículo
+                            Essa a&ccedil;&atilde;o n&atilde;o poder&aacute; ser revertida. Isso far&aacute; com que o ve&iacute;culo
                             <span id="vehicleModelToRemove" class="font-weight-bold text-danger"></span>
                             e todos os seus dados sejam completamente removidos.
                         </p>
@@ -166,7 +161,7 @@
                         <form action='<c:url value="/vehicles/delete" />' method="POST" class="w-100">
                             <input type="hidden" name="vehicleId" id="vehicleId" />
                             <button type="submit" class="btn btn-outline-danger w-100 font-weight-bold">
-                                Entendo as consequências, remova o registro do veículo
+                                Entendo as consequ&ecirc;ncias, remova o registro do ve&iacute;culo
                             </button>
                         </form>
                     </div>
