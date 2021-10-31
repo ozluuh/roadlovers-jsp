@@ -18,6 +18,6 @@ public enum Manufacturer {
     DODGE("Dodge"),
     HUMMER("Hummer"),
     MITSUBISHI("Mitsubishi");
-    
+
     private final String description;
 }

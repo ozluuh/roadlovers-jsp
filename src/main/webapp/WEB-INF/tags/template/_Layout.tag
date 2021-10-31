@@ -19,13 +19,13 @@
         <nav class="navbar navbar-expand-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" href='<c:url value="/" />'>${SiteName}</a>
-                <button 
-                	class="navbar-toggler" 
-                	type="button" 
-                	data-bs-toggle="collapse" 
-                	data-bs-target=".navbar-collapse" 
+                <button
+                	class="navbar-toggler"
+                	type="button"
+                	data-bs-toggle="collapse"
+                	data-bs-target=".navbar-collapse"
                 	aria-controls="navbarSupportedContent"
-                    aria-expanded="false" 
+                    aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
                 	<span class="navbar-toggler-icon"></span>
@@ -36,7 +36,7 @@
                             <a class="nav-link" href='<c:url value="/" />'>Principal</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href='<c:url value="/vehicles" />'>Veículos</a>
+                            <a class="nav-link" href='<c:url value="/vehicles" />'>Veï¿½culos</a>
                         </li>
                     </ul>
                 </div>

@@ -12,10 +12,10 @@
 		<c:url var="form" value="/vehicles" />
 		<h1>Cadastro de Veículos</h1>
 		<form action='${form}/store' method="POST" autocomplete="off">
-		
+
 		    <!-- FORM -->
 		    <jsp:include page="_Form.jsp" />
-		
+
 		    <div class="d-flex justify-content-end">
 		        <div class="btn-group">
 		            <button class="btn btn-primary" type="submit">Cadastrar</button>

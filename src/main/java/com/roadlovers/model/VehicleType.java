@@ -13,6 +13,6 @@ public enum VehicleType {
     LUXURY("Luxo"),
     EXOTIC("Exótico"),
     TUNER("Tuner");
-    
+
     private final String description;
 }

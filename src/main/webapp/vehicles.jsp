@@ -13,11 +13,11 @@
 				document.querySelectorAll('.vehicle-remove').forEach(elmnt => {
 					elmnt.addEventListener("click", event => {
 						const button = elmnt;
-						
+
 						const vehId = elmnt.getAttribute("data-vehicle-id");
 						const vehModel = elmnt.getAttribute("data-vehicle-model");
 						const vehManufacturer = elmnt.getAttribute("data-vehicle-manufacturer");
-	
+
 						document.querySelector("#vehicleId").value = parseInt(vehId);
 						document.querySelector("#vehicleModelToRemove").innerText = vehManufacturer + " " + vehModel;
 					});
@@ -28,7 +28,7 @@
 
 	<jsp:body>
 		<h1>Veículos Cadastrados</h1>
-		
+
 		<c:if test="${not empty message}">
 			<component:alert message="${message}" type="${severity}" />
 			<c:remove var="message" scope="session" />
@@ -68,9 +68,9 @@
 					<c:choose>
 						<c:when test="${filter}">encontrados</c:when>
 						<c:otherwise>cadastrados</c:otherwise>
-					</c:choose> 
+					</c:choose>
 					&nbsp;em nossa base:&nbsp;
-					<c:out value="${vehiclesList.size()}" /> 
+					<c:out value="${vehiclesList.size()}" />
 				</caption>
 				<thead class="thead-dark">
 					<tr class="text-center">
@@ -114,8 +114,8 @@
 											<i class="bi bi-pencil"></i>
 											<span class="visually-hidden">Editar registro</span>
 										</a>
-		
-										<button 
+
+										<button
 											class="btn btn-outline-danger vehicle-remove"
 											title="Excluir"
 											data-bs-toggle="modal"

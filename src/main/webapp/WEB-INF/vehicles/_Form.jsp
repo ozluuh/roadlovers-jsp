@@ -1,33 +1,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="mb-2">
-	<input 
-		name="idVehicle" 
-		id="Id" 
-		value="${vehicle.id}" 
-		hidden 
+	<input
+		name="idVehicle"
+		id="Id"
+		value="${vehicle.id}"
+		hidden
 	/>
     <div class="form-group">
         <label for="Model">Modelo</label>
-        <input 
-        	name="txtVehicleModel" 
-        	id="Model" 
+        <input
+        	name="txtVehicleModel"
+        	id="Model"
         	class="form-control"
-        	placeholder="Informe o modelo do veículo..."
-        	value="${vehicle.model}" 
-        	required 
+        	placeholder="Informe o modelo do veï¿½culo..."
+        	value="${vehicle.model}"
+        	required
         />
     </div>
 
     <div class="form-group">
         <label for="Year">Ano</label>
-        <input 
-        	name="nbrVehicleYear" 
-        	id="Year" 
-        	class="form-control" 
-        	min="1920" 
+        <input
+        	name="nbrVehicleYear"
+        	id="Year"
+        	class="form-control"
+        	min="1920"
         	max="9999"
-        	placeholder="Informe o ano do veículo..."
-        	value="${vehicle.year}" 
+        	placeholder="Informe o ano do veï¿½culo..."
+        	value="${vehicle.year}"
         />
     </div>
 
@@ -38,7 +38,7 @@
         	name="slcVehicleManufacturer"
             id="Manufacturer"
             class="form-control"
-            placeholder="Informe a fabricante do veículo..."
+            placeholder="Informe a fabricante do veï¿½culo..."
             list="manufacturers"
             value="${vehicle.manufacturer}"
             required
@@ -52,11 +52,11 @@
 
     <div class="form-group">
         <label for="VehicleType">Classe</label>
-        <input 
-        	name="slcVehicleType" 
-        	id="VehicleType" 
-        	class="form-control" 
-        	placeholder="Informe a classe do veículo..."
+        <input
+        	name="slcVehicleType"
+        	id="VehicleType"
+        	class="form-control"
+        	placeholder="Informe a classe do veï¿½culo..."
         	value="${vehicle.classe}"
         	list="classes"
         	required
@@ -70,16 +70,16 @@
 
     <div class="form-group">
         <label for="Value">Valor</label>
-        <input 
-        	name="vlrVehicleValue" 
-        	id="Value" 
-        	class="form-control hidden-arrow" 
-        	step="any" 
+        <input
+        	name="vlrVehicleValue"
+        	id="Value"
+        	class="form-control hidden-arrow"
+        	step="any"
         	min="1"
-        	placeholder="Informe o valor do veículo..."
+        	placeholder="Informe o valor do veï¿½culo..."
         	pattern="^\d+(\.|,)?\d{2}$"
         	value="${vehicle.value}"
-        	required 
+        	required
         />
     </div>
 </div>

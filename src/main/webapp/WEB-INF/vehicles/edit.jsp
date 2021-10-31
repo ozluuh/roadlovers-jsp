@@ -8,10 +8,10 @@
 		<c:url var="form" value="/vehicles" />
 		<h1>Atualizar Veículo</h1>
 		<form action="${form}/update" method="POST" autocomplete="off">
-		
+
 		    <!-- FORM -->
 		    <jsp:include page="_Form.jsp" />
-		
+
 		    <div class="d-flex justify-content-end">
 		        <div class="btn-group">
 		            <button class="btn btn-primary" type="submit">Atualizar</button>
