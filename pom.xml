@@ -31,6 +31,25 @@
         <artifactId>maven-war-plugin</artifactId>
         <version>3.2.3</version>
       </plugin>
+	<plugin>
+		<groupId>org.ec4j.maven</groupId>
+		<artifactId>editorconfig-maven-plugin</artifactId>
+		<version>0.1.1</version>
+		<executions>
+			<execution>
+				<id>check</id>
+				<phase>verify</phase>
+				<goals>
+					<goal>check</goal>
+				</goals>
+			</execution>
+		</executions>
+		<configuration>
+			<excludes>
+				<exclude>src/main/webapp/lib/**/*</exclude>
+			</excludes>
+		</configuration>
+			</plugin>
     </plugins>
   </build>
   
