@@ -12,7 +12,11 @@ IF NOT EXISTS (
         FROM sys.databases
         WHERE [name] = N'RoadLovers'
 )
-CREATE DATABASE RoadLovers
+    CREATE DATABASE RoadLovers
+GO
+
+ -- Connect to the 'Roadlovers' database to run this snippet
+USE RoadLovers
 GO
 
 -- Create a new table called '[Tbl_Vehicle]' in schema '[dbo]'
@@ -27,7 +31,7 @@ CREATE TABLE [dbo].[Tbl_Vehicle]
     [_Year] INT NOT NULL,
     [Model] VARCHAR(100) NOT NULL,
     [Price] NUMERIC(15,2) NOT NULL,
-    [CreatedAt] DATETIME2 DEFAULT CURRENT_TIMESTAMP
+    [Created_At] DATETIME2 DEFAULT CURRENT_TIMESTAMP
 );
 GO
 
@@ -57,24 +61,24 @@ CREATE TABLE [dbo].[Tbl_Manufacturer]
 );
 GO
 
--- Add a new column '[class_id]' to table '[Tbl_Vehicle]' in schema '[dbo]'
+-- Add a new column '[Class_Id]' to table '[Tbl_Vehicle]' in schema '[dbo]'
 ALTER TABLE [dbo].[Tbl_Vehicle]
-    ADD [class_id] INT NOT NULL
+    ADD [Class_Id] INT NOT NULL
 GO
 
--- Add a new column '[manufacturer_id]' to table '[Tbl_Vehicle]' in schema '[dbo]'
+-- Add a new column '[Manufacturer_Id]' to table '[Tbl_Vehicle]' in schema '[dbo]'
 ALTER TABLE [dbo].[Tbl_Vehicle]
-    ADD [manufacturer_id] INT NOT NULL
+    ADD [Manufacturer_Id] INT NOT NULL
 GO
 
 -- Add foreing key 'FK_VehicleClass' to table '[Tbl_Vehicle]' in schema '[dbo]'
 ALTER TABLE [dbo].[Tbl_Vehicle]
     ADD CONSTRAINT FK_VehicleClass
-        FOREIGN KEY (class_id) REFERENCES Tbl_Class(Id);
+        FOREIGN KEY (Class_Id) REFERENCES Tbl_Class(Id);
 GO
 
 -- Add foreing key 'FK_VehicleManufacturer' to table '[Tbl_Vehicle]' in schema '[dbo]'
 ALTER TABLE [dbo].[Tbl_Vehicle]
     ADD CONSTRAINT FK_VehicleManufacturer
-        FOREIGN KEY (manufacturer_id) REFERENCES Tbl_Manufacturer(Id);
+        FOREIGN KEY (Manufacturer_Id) REFERENCES Tbl_Manufacturer(Id);
 GO

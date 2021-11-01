@@ -64,8 +64,7 @@
         <div class="table-responsive-md">
             <table class="table table-striped table-hover table-sm table-bordered table-primary">
                 <caption>
-                    Total de ve&iacute;culos cadastrados em nossa base:&nbsp;
-                    <c:out value="${vehiclesList.size()}" />
+                    Total de ve&iacute;culos cadastrados em nossa base: <c:out value="${vehiclesList.size()}" />
                 </caption>
                 <thead class="thead-dark">
                     <tr class="text-center">
