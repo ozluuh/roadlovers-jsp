@@ -30,7 +30,7 @@ public class ConnectionFactory {
 	private ConnectionFactory() {
 		dbHost = Optional.ofNullable(System.getenv("DB_HOST")).orElse("localhost");
 		dbUser = Optional.ofNullable(System.getenv("DB_USER")).orElse("sa");
-		dbPass = System.getenv("DB_PASS");
+		dbPass = Optional.ofNullable(System.getenv("DB_PASS")).orElse("sa");
 		dbPort = Optional.ofNullable(System.getenv("DB_PORT")).orElse("1433");
 	}
 

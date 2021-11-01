@@ -1,18 +1,13 @@
 package com.roadlovers.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 
-@Getter
-@RequiredArgsConstructor
-public enum VehicleType {
-	SUV("SUV"),
-	UTILITY("Utilitário"),
-	SPORTS("Esporte"),
-	MUSCLE("Muscle"),
-	LUXURY("Luxo"),
-	EXOTIC("Exótico"),
-	TUNER("Tuner");
+@Data
+@Builder
+public class VehicleType {
 
-	private final String description;
+	private Long id;
+
+	private String description;
 }

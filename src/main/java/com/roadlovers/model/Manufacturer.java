@@ -1,23 +1,13 @@
 package com.roadlovers.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 
-@RequiredArgsConstructor
-@Getter
-public enum Manufacturer {
-	FERRARI("Ferrari"),
-	LAMBORGHINI("Lamborghini"),
-	TOYOTA("Toyota"),
-	HONDA("Honda"),
-	HYUNDAI("Hyundai"),
-	CHEVROLET("Chevrolet"),
-	GEMBALLA("Gemballa"),
-	NISSAN("Nissan"),
-	MERCEDES_BENZ("Mercedes-Benz"),
-	DODGE("Dodge"),
-	HUMMER("Hummer"),
-	MITSUBISHI("Mitsubishi");
+@Data
+@Builder
+public class Manufacturer {
 
-	private final String description;
+	private Long id;
+
+	private String description;
 }
