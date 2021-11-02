@@ -5,10 +5,7 @@ import com.roadlovers.dao.impl.ManufacturerDaoImpl;
 import com.roadlovers.dao.impl.VehicleDaoImpl;
 import com.roadlovers.dao.impl.VehicleTypeDaoImpl;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
@@ -16,7 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.roadlovers.model.Manufacturer;
 import com.roadlovers.model.Vehicle;
@@ -102,14 +98,12 @@ public class VehicleController extends HttpServlet {
 			classes = daoClasses.findAll();
 		} catch (SQLException e) {
 			classes = new ArrayList<>();
-			e.printStackTrace();
 		}
 
 		try {
 			manufacturers = daoManufacturer.findAll();
 		} catch (SQLException e) {
 			manufacturers = new ArrayList<>();
-			e.printStackTrace();
 		}
 
 		ServletUtil.addRequestAttribute(req, "manufacturers", manufacturers);
@@ -133,7 +127,7 @@ public class VehicleController extends HttpServlet {
 		try {
 			vehicle = dao.findById(id);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.getLogger(VehicleController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		if(vehicle == null) {
@@ -159,8 +153,6 @@ public class VehicleController extends HttpServlet {
 		} catch (SQLException e) {
 			ServletUtil.addSessionAttribute(req, "message", "Erro ao atualizar o veículo. Tente novamente.");
 			ServletUtil.addSessionAttribute(req, "severity", "danger");
-
-			e.printStackTrace();
 		}
 
 		ServletUtil.sendRedirectTo(req, resp, "/vehicles");
@@ -177,7 +169,6 @@ public class VehicleController extends HttpServlet {
 		} catch (SQLException e) {
 			ServletUtil.addSessionAttribute(req, "message", "Erro ao remover o veículo. Tente novamente.");
 			ServletUtil.addSessionAttribute(req, "severity", "danger");
-			e.printStackTrace();
 		}
 
 		ServletUtil.sendRedirectTo(req, resp, "/vehicles");
@@ -187,8 +178,6 @@ public class VehicleController extends HttpServlet {
 
 	private void store(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		Vehicle vehicle = parseVehicle(req);
-
-		// if(vehicle)
 
 		try {
 			dao.store(vehicle);
@@ -224,14 +213,12 @@ public class VehicleController extends HttpServlet {
 			classe = daoClasses.findById(classeId);
 		} catch (SQLException e) {
 			classe = null;
-			e.printStackTrace();
 		}
 
 		try {
 			manufacturer = daoManufacturer.findById(manufacturerId);
 		} catch (SQLException e) {
 			manufacturer = null;
-			e.printStackTrace();
 		}
 
 		return Vehicle
@@ -259,7 +246,7 @@ public class VehicleController extends HttpServlet {
 		if(year == null || year.isEmpty()) {
 			ServletUtil.addRequestAttribute(req, "vehicles", vehicles);
 		} else {
-			List<Vehicle> filteredVehicles = vehicles
+			vehicles = vehicles
 					.stream()
 					.filter(vehicle -> vehicle.getYear() == Integer.valueOf(year))
 					.collect(Collectors.toList());
