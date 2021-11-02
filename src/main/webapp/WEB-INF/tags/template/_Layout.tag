@@ -36,7 +36,13 @@
                                 <a class="nav-link" href='<c:url value="/" />'>Principal</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href='<c:url value="/vehicles" />'>Ve&iacute;culos</a>
+                                <a class="nav-link" href='<c:url value="/vehicle" />'>Ve&iacute;culos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='<c:url value="/manufacturer" />'>Fabricantes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='<c:url value="/class" />'>Classes</a>
                             </li>
                         </ul>
                     </div>
