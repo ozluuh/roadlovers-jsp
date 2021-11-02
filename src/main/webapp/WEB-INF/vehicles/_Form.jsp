@@ -36,7 +36,7 @@
         <select
             name="slcVehicleManufacturer"
             id="Manufacturer"
-            class="custom-select"
+            class="form-select"
             required
         >
             <c:if test="${empty vehicle.manufacturer.id}">
@@ -61,7 +61,7 @@
         <select
             name="slcVehicleType"
             id="VehicleType"
-            class="custom-select"
+            class="form-select"
             required
         >
             <c:if test="${empty vehicle.classe.id}">

@@ -86,4 +86,22 @@ public class ManufacturerDaoImpl implements BaseDao<Manufacturer, Long> {
 		}
 		stmt.close();
 	}
+
+    public void store(Manufacturer manufacturer) throws SQLException {
+		String sql = "INSERT INTO " + TABLE_NAME + "(Name)"
+					+ "VALUES(?);";
+
+		stmt = conn.prepareStatement(sql, new String[]{"Id"});
+		stmt.setString(1, manufacturer.getDescription());
+
+		stmt.executeUpdate();
+
+		res = stmt.getGeneratedKeys();
+
+		if(res.next()){
+			manufacturer.setId(res.getLong(1));
+		}
+
+		close();
+    }
 }

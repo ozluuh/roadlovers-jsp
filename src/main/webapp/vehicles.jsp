@@ -40,14 +40,14 @@
                     <div class="input-group">
                         <label for="year" class="input-group-text">Pesquise pelo ano</label>
                         <input
-                            type="number"
-                            name="nbrYear"
-                            id="year"
-                            min="1920"
-                            max="9999"
-                            class="form-control"
-                            placeholder="Ano do ve&iacute;culo"
-                            />
+                          type="number"
+                          name="nbrYear"
+                          id="year"
+                          min="1920"
+                          max="9999"
+                          class="form-control"
+                          placeholder="Ano do ve&iacute;culo"
+                          />
                         <button class="btn btn-outline-primary" title="Pesquisar" type="submit">
                             <i class="bi bi-search"></i>
                             <span class="ms-2 ml-2 d-none d-md-inline">Buscar</span>
@@ -55,7 +55,7 @@
                     </div>
                 </form>
             </div>
-            <a class="btn btn-outline-secondary" href='<c:url value="/vehicles/new" />' title="Cadastrar novo ve&iacute;culo">
+            <a class="btn btn-outline-secondary" href='<c:url value="/vehicle/new" />' title="Cadastrar novo ve&iacute;culo">
                 <i class="bi bi-plus-lg"></i>
                 <span class="ms-2 text-capitalize"><span class="d-none d-md-inline">Cadastrar</span> ve&iacute;culo</span>
             </a>
@@ -64,7 +64,7 @@
         <div class="table-responsive-md">
             <table class="table table-striped table-hover table-sm table-bordered table-primary">
                 <caption>
-                    Total de ve&iacute;culos cadastrados em nossa base: <c:out value="${vehiclesList.size()}" />
+                    Total de ve&iacute;culos cadastrados em nossa base: <c:out value="${vehicles.size()}" />
                 </caption>
                 <thead class="thead-dark">
                     <tr class="text-center">
@@ -79,12 +79,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:if test="${empty vehiclesList}">
+                    <c:if test="${empty vehicles}">
                         <tr class="text-center">
                             <td colspan="8">Nenhum registro ainda...</td>
                         </tr>
                     </c:if>
-                    <c:forEach var="vehicle" items="${vehiclesList}" varStatus="current">
+                    <c:forEach var="vehicle" items="${vehicles}" varStatus="current">
                         <tr class="text-center">
                             <th scope="row">
                                 <div class="text-end">
@@ -109,20 +109,20 @@
                             <td>
                                 <div class="d-flex justify-content-center">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="A&ccedil;&otilde;es">
-                                        <a href='<c:url value="/vehicles/edit?id=${vehicle.id}" />' class="btn btn-outline-info" title="Editar">
+                                        <a href='<c:url value="/vehicle/edit?id=${vehicle.id}" />' class="btn btn-outline-info" title="Editar">
                                             <i class="bi bi-pencil"></i>
                                             <span class="visually-hidden">Editar registro</span>
                                         </a>
 
                                         <button
-                                            class="btn btn-outline-danger vehicle-remove"
-                                            title="Excluir"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#removeVehicleModal"
-                                            data-vehicle-id="${vehicle.id}"
-                                            data-vehicle-model="${vehicle.model}"
-                                            data-vehicle-manufacturer="${vehicle.manufacturer.description}"
-                                            >
+                                          class="btn btn-outline-danger vehicle-remove"
+                                          title="Excluir"
+                                          data-bs-toggle="modal"
+                                          data-bs-target="#removeVehicleModal"
+                                          data-vehicle-id="${vehicle.id}"
+                                          data-vehicle-model="${vehicle.model}"
+                                          data-vehicle-manufacturer="${vehicle.manufacturer.description}"
+                                          >
                                             <i class="bi bi-trash"></i>
                                             <span class="visually-hidden">Remover registro</span>
                                         </button>
@@ -137,13 +137,13 @@
 
         <!-- Modal -->
         <div
-            class="modal fade"
-            id="removeVehicleModal"
-            data-keyboard="false"
-            tabindex="-1"
-            aria-labelledby="removeVehicleModalLabel"
-            aria-hidden="true"
-            >
+          class="modal fade"
+          id="removeVehicleModal"
+          data-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="removeVehicleModalLabel"
+          aria-hidden="true"
+          >
             <div class="modal-dialog">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">

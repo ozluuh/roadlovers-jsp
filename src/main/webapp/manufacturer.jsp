@@ -14,12 +14,23 @@
         <c:url var="form" value="/manufacturer" />
         <h1 class="display-4">Fabricantes</h1>
 
+        <c:if test="${not empty message}">
+            <component:alert message="${message}" type="${severity}" />
+            <c:remove var="message" scope="session" />
+        </c:if>
+
         <div class="row">
             <div class="col-6">
                 <form action='${form}/store' method="POST" autocomplete="off">
                     <div class="input-group">
                         <div class="form-floating">
-                            <input name="txtManufacturerName" id="Name" placeholder="Nome da fabricante" class="form-control">
+                            <input
+                              name="txtManufacturerName"
+                              id="Name"
+                              placeholder="Nome da fabricante"
+                              class="form-control"
+                              required
+                              />
                             <label for="Name">Nome</label>
                         </div>
 
@@ -32,7 +43,7 @@
             </div>
             <div class="col-6">
                 <table class="table table-striped">
-                    <caption>Total de Fabricantes cadastradas: 13</caption>
+                    <caption>Total de Fabricantes cadastradas: ${manufacturers.size()}</caption>
                     <thead>
                         <tr class="text-center">
                             <th scope="col">Nome</th>

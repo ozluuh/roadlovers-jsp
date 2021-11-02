@@ -85,4 +85,22 @@ public class VehicleTypeDaoImpl implements BaseDao<VehicleType, Long> {
 				.build();
 	}
 
+    public void store(VehicleType classe) throws SQLException {
+		String sql = "INSERT INTO " + TABLE_NAME + "(Name)"
+					+ "VALUES(?);";
+
+		stmt = conn.prepareStatement(sql, new String[]{"Id"});
+		stmt.setString(1, classe.getDescription());
+
+		stmt.executeUpdate();
+
+		res = stmt.getGeneratedKeys();
+
+		if(res.next()){
+			classe.setId(res.getLong(1));
+		}
+
+		close();
+    }
+
 }

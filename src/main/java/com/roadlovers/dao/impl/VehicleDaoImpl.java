@@ -6,11 +6,14 @@
 package com.roadlovers.dao.impl;
 
 import com.roadlovers.dao.CrudDao;
+import com.roadlovers.model.Manufacturer;
 import com.roadlovers.model.Vehicle;
+import com.roadlovers.model.VehicleType;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -26,9 +29,13 @@ public class VehicleDaoImpl implements CrudDao<Vehicle, Long> {
 	private final Connection conn;
 	private ResultSet res;
 	private PreparedStatement stmt;
+	private ManufacturerDaoImpl daoManufacturer;
+	private VehicleTypeDaoImpl daoClasse;
 
 	public VehicleDaoImpl(Connection conn) {
 		this.conn = conn;
+		daoManufacturer = new ManufacturerDaoImpl(conn);
+		daoClasse = new VehicleTypeDaoImpl(conn);
 	}
 
 	@Override
@@ -131,19 +138,29 @@ public class VehicleDaoImpl implements CrudDao<Vehicle, Long> {
 	}
 
 	private Vehicle parse(ResultSet res) throws SQLException {
+		Manufacturer manufacturer = null;
+		VehicleType classe = null;
+
 		long id = res.getLong("Id");
 		int year = res.getInt("_Year");
 		String model = res.getString("Model");
 		double value = res.getDouble("Price");
-		String createdAt = res.getString("CreatedAt");
+		String createdAt = res.getString("Created_At");
+		long classId = res.getLong("Class_Id");
+		long manufacturerId = res.getLong("Manufacturer_Id");
 
-		System.out.println("Date: " + createdAt);
+		classe = daoClasse.findById(classId);
+		manufacturer = daoManufacturer.findById(manufacturerId);
 
 		return Vehicle
 				.builder()
 				.id(id)
 				.model(model)
 				.value(value)
+				.year(year)
+				.createdAt(LocalDateTime.now())
+				.classe(classe)
+				.manufacturer(manufacturer)
 				.build();
 	}
 

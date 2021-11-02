@@ -201,7 +201,7 @@ public class VehicleController extends HttpServlet {
 			ServletUtil.addSessionAttribute(req, "severity", "danger");
 		}
 
-		ServletUtil.sendRedirectTo(req, resp, "/vehicles");
+		ServletUtil.sendRedirectTo(req, resp, "/vehicle");
 	}
 
 	private Vehicle parseVehicle(HttpServletRequest req) {
@@ -257,14 +257,14 @@ public class VehicleController extends HttpServlet {
 		}
 
 		if(year == null || year.isEmpty()) {
-			req.setAttribute("vehiclesList", vehicles);
+			ServletUtil.addRequestAttribute(req, "vehicles", vehicles);
 		} else {
 			List<Vehicle> filteredVehicles = vehicles
 					.stream()
 					.filter(vehicle -> vehicle.getYear() == Integer.valueOf(year))
 					.collect(Collectors.toList());
 
-			req.setAttribute("vehiclesList", filteredVehicles);
+			ServletUtil.addRequestAttribute(req, "vehicles", vehicles);
 		}
 
 		req.getRequestDispatcher("/vehicles.jsp").forward(req, resp);

@@ -14,6 +14,11 @@
         <c:url var="form" value="/classe" />
         <h1 class="display-4">Classes</h1>
 
+        <c:if test="${not empty message}">
+            <component:alert message="${message}" type="${severity}" />
+            <c:remove var="message" scope="session" />
+        </c:if>
+
         <div class="row">
             <div class="col-6">
                 <form action='${form}/store' method="POST" autocomplete="off">
@@ -32,7 +37,7 @@
             </div>
             <div class="col-6">
                 <table class="table table-striped">
-                    <caption>Total de Classes cadastradas: 13</caption>
+                    <caption>Total de Classes cadastradas: ${classes.size()}</caption>
                     <thead>
                         <tr class="text-center">
                             <th scope="col">Nome</th>
