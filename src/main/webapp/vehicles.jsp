@@ -79,6 +79,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <c:if test="${empty vehiclesList}">
+                        <tr class="text-center">
+                            <td colspan="8">Nenhum registro ainda...</td>
+                        </tr>
+                    </c:if>
                     <c:forEach var="vehicle" items="${vehiclesList}" varStatus="current">
                         <tr class="text-center">
                             <th scope="row">

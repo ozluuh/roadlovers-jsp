@@ -33,39 +33,32 @@
 
     <div class="form-group">
         <label for="Manufacturer">Fabricante</label>
-        <input
-            type="text"
+        <select
             name="slcVehicleManufacturer"
             id="Manufacturer"
-            class="form-control"
-            placeholder="Informe a fabricante do ve&iacute;culo..."
-            list="manufacturers"
-            value="${vehicle.manufacturer}"
+            class="custom-select"
             required
-            />
-        <datalist id="manufacturers" class="collapse">
+        >
+            <option value="" label="Selecione a fabricante..." />
             <c:forEach var="manufacturer" items="${manufacturers}">
-                <option value="${manufacturer}" label="${manufacturer.description}" />
+                <option value="${manufacturer.id}" label="${manufacturer.description}" />
             </c:forEach>
-        </datalist>
+        </select>
     </div>
 
     <div class="form-group">
         <label for="VehicleType">Classe</label>
-        <input
+        <select
             name="slcVehicleType"
             id="VehicleType"
-            class="form-control"
-            placeholder="Informe a classe do ve&iacute;culo..."
-            value="${vehicle.classe}"
-            list="classes"
+            class="custom-select"
             required
-            />
-        <datalist id="classes" class="collapse">
+        >
+            <option value="" label="Selecione a classe..." />
             <c:forEach var="classe" items="${classes}">
-                <option value="${classe}" label="${classe.description}" />
+                <option value="${classe.id}" label="${classe.description}" />
             </c:forEach>
-        </datalist>
+        </select>
     </div>
 
     <div class="form-group">
@@ -77,7 +70,7 @@
             step="any"
             min="1"
             placeholder="Informe o valor do ve&iacute;culo..."
-            pattern="^\d+(\.|,)?\d{2}$"
+            pattern="^\d+\.?\d{2}$"
             value="${vehicle.value}"
             required
             />
