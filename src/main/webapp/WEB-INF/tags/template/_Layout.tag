@@ -42,7 +42,7 @@
                                 <a class="nav-link" href='<c:url value="/manufacturer" />'>Fabricantes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href='<c:url value="/class" />'>Classes</a>
+                                <a class="nav-link" href='<c:url value="/classe" />'>Classes</a>
                             </li>
                         </ul>
                     </div>

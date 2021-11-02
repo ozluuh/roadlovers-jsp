@@ -9,7 +9,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <c:url var="form" value="/vehicles" />
+        <c:url var="form" value="/vehicle" />
         <h1>Cadastro de Veículos</h1>
         <form action='${form}/store' method="POST" autocomplete="off">
 

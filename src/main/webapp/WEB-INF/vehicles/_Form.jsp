@@ -39,9 +39,19 @@
             class="custom-select"
             required
         >
-            <option value="" label="Selecione a fabricante..." />
+            <c:if test="${empty vehicle.manufacturer.id}">
+                <option hidden selected label="Selecione a fabricante..." />
+            </c:if>
+
             <c:forEach var="manufacturer" items="${manufacturers}">
-                <option value="${manufacturer.id}" label="${manufacturer.description}" />
+                <c:choose>
+                    <c:when test="${not empty vehicle.manufacturer.id and vehicle.manufacturer.id eq manufacturer.id}">
+                        <option selected value="${manufacturer.id}" label="${manufacturer.description}" />
+                    </c:when>
+                    <c:otherwise>
+                        <option value="${manufacturer.id}" label="${manufacturer.description}" />
+                    </c:otherwise>
+                </c:choose>
             </c:forEach>
         </select>
     </div>
@@ -54,9 +64,19 @@
             class="custom-select"
             required
         >
-            <option value="" label="Selecione a classe..." />
+            <c:if test="${empty vehicle.classe.id}">
+                <option hidden selected label="Selecione a classe..." />
+            </c:if>
+
             <c:forEach var="classe" items="${classes}">
-                <option value="${classe.id}" label="${classe.description}" />
+                <c:choose>
+                    <c:when test="${not empty vehicle.classe.id and vehicle.classe.id eq classe.id}">
+                        <option selected value="${classe.id}" label="${classe.description}" />
+                    </c:when>
+                    <c:otherwise>
+                        <option value="${classe.id}" label="${classe.description}" />
+                    </c:otherwise>
+                </c:choose>
             </c:forEach>
         </select>
     </div>

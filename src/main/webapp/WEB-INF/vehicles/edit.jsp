@@ -5,7 +5,7 @@
 <layout:_Layout title="Editar">
 
     <jsp:body>
-        <c:url var="form" value="/vehicles" />
+        <c:url var="form" value="/vehicle" />
         <h1>Atualizar Veículo</h1>
         <form action="${form}/update" method="POST" autocomplete="off">
 
